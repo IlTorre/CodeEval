@@ -1,0 +1,19 @@
+#!/usr/bin/env python
+# -*- coding: utf-8 -*-
+s=5
+c=2
+x=3
+primi=[2,3]
+while(c<1000):
+    x=x+2
+    controllo=1
+    for i in primi:
+        if x%i==0:
+            controllo=None
+            break
+    if controllo:
+        s=s+x
+        primi.append(x)
+        c=c+1
+print s
+exit(0)

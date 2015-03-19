@@ -1,0 +1,30 @@
+#!/usr/bin/env python
+# -*- coding: utf-8 -*-
+
+import sys
+import csv
+
+#open file
+
+try:
+    f = open(sys.argv[1], 'rt')
+    reader = csv.reader(f,delimiter=' ')
+except IOError:
+    print "errore apertura file"
+    exit(-1)
+
+
+for row in reader:
+    for i in xrange(1,eval(row[2])+1,1):
+        s=''
+        if (i%eval(row[0])==0):
+            s+='F'
+        if (i%eval(row[1])==0):
+            s+='B'
+        if(s==''):
+            s=str(i)
+        print s,
+    print
+
+f.close()
+exit(0)

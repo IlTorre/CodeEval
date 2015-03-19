@@ -1,0 +1,22 @@
+#!/usr/bin/env python
+# -*- coding: utf-8 -*-
+
+import sys
+import csv
+
+#open file
+
+try:
+    f = open(sys.argv[1], 'rt')
+    reader = csv.reader(f,delimiter=',')
+except IOError:
+    print "errore apertura file"
+    exit(-1)
+
+for row in reader:
+    l=str(row[0])
+    for i in xrange(1,len(row[1])):
+        l=l.replace(row[1][i],'')
+    print l
+f.close()
+exit(0)
