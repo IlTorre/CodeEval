@@ -10,8 +10,12 @@ fil = open(sys.argv[1], 'r')
 test_cases=fil.read().strip().splitlines()
 
 for test in test_cases:
-    A,B=test.split(',')
-    if B==A[-len(B):len(A)]:
-        print 1
-    else:
-        print 0
+    x,y=test.split(',')
+    x=int(x)
+    y=int(y)
+    c=1
+    m=y
+    while m<x:
+        c=c+1
+        m=c*y
+    print m

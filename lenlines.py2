@@ -1,0 +1,35 @@
+#!/usr/bin/env python
+# -*- coding: utf-8 -*-
+
+__author__ = 'Marco Torreggiani'
+
+import sys
+
+fil = open(sys.argv[1], 'r')
+line=fil.read().strip().splitlines()
+
+n=line[0]
+line.remove(n)
+n=int(n)
+lun={}
+for l in line:
+    if len(l) not in lun.keys():
+        lun.update({len(l):[l]})
+    else:
+        el= lun.pop(len(l))
+        el=el + [l]
+        lun.update({len(l):el})
+c=0
+while c<n:
+    mas=max(lun.keys())
+    el = lun.pop(mas)
+    if len(el)>1:
+        print el[0]
+        el=el[1:]
+        lun.update({mas:el})
+    else:
+        print el[0]
+    c=c+1
+
+
+

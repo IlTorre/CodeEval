@@ -1,0 +1,10 @@
+#!/usr/bin/env python
+# -*- coding: utf-8 -*-
+
+__author__ = 'Marco Torreggiani'
+import sys
+
+if sys.byteorder=='big':
+    print 'BigEndian'
+else:
+    print 'LittleEndian'
