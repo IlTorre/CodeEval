@@ -1,0 +1,19 @@
+#!/usr/bin/env python
+# -*- coding: utf-8 -*-
+
+__author__ = 'Marco Torreggiani'
+
+import sys
+
+
+fil = open(sys.argv[1], 'r')
+test_cases=fil.read().strip().splitlines()
+
+for test in test_cases:
+    x=bin(int(test))
+    x=str(x)[2:]
+    c=0
+    for i in x:
+       if i=='1':
+           c=c+1
+    print c
