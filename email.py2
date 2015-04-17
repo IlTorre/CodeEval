@@ -1,0 +1,18 @@
+#!/usr/bin/env python
+# -*- coding: utf-8 -*-
+
+__author__ = 'Marco Torreggiani'
+
+import sys
+import re
+
+fil = open(sys.argv[1], 'r')
+test_cases=fil.read().strip().splitlines()
+
+for test in test_cases:
+    #print test
+    result = re.match(r'^(([A-Za-z0-9\.+_-]+)|("[A-Za-z0-9\.+_@-]+"))@[A-Za-z0-9\.+_-]+\.[a-z]+$', test)
+    if result==None:
+        print 'false'
+    else:
+        print 'true'
