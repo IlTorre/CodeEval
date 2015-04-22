@@ -1,0 +1,40 @@
+#!/usr/bin/env python
+# -*- coding: utf-8 -*-
+
+__author__ = 'Marco Torreggiani'
+
+'''
+Given a string comprising just of the characters (,),{,},[,] determine if it is well-formed or not.
+
+INPUT SAMPLE:
+Your program should accept as its first argument a path to a filename.
+Each line in this file contains a string comprising of the characters mentioned above. E.g.
+
+OUTPUT SAMPLE:
+Print out True or False if the string is well-formed. E.g.
+'''
+
+import sys
+
+fil = open(sys.argv[1], 'r')
+test_cases=fil.read().strip().splitlines()
+z={'(':')','[':']','{':'}'}
+for test in test_cases:
+    stack=[]
+    ok=True
+    for p in test:
+        if p in ['(','[','{']:
+            stack.append(p)
+        else:
+            if len(stack)>0:
+                x=stack.pop()
+                if p!=z[x]:
+                    ok=False
+                    break
+            else:
+                ok=False
+                break
+    if ok and len(stack)==0:
+        print 'True'
+    else:
+        print 'False'

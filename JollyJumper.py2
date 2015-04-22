@@ -1,0 +1,45 @@
+#!/usr/bin/env python
+# -*- coding: utf-8 -*-
+
+__author__ = 'Marco Torreggiani'
+
+'''
+JOLLY JUMPERS
+Credits: Programming Challenges by Steven S. Skiena and Miguel A. Revilla
+
+CHALLENGE DESCRIPTION:
+A sequence of n > 0 integers is called a jolly jumper if the absolute values of the differences between successive
+elements take on all possible values 1 through n - 1. eg.
+
+ES:
+1 4 2 3
+is a jolly jumper, because the absolute differences are 3, 2, and 1, respectively.
+The definition implies that any sequence of a single integer is a jolly jumper.
+Write a program to determine whether each of a number of sequences is a jolly jumper.
+
+INPUT SAMPLE:
+Your program should accept as its first argument a path to a filename. Each line in this file is one test case.
+Each test case will contain an integer n < 3000 followed by n integers representing the sequence.
+The integers are space delimited.
+'''
+
+import sys
+
+fil = open(sys.argv[1], 'r')
+test_cases=fil.read().strip().splitlines()
+
+for test in test_cases:
+    seq = test.split(' ')
+    n=int(seq[0])
+    seq=seq[1:]
+    c=0
+    jolly=True
+    while c<n-1:
+        if ((abs(int(seq[c+1])-int(seq[c]))>=n) or (int(seq[c+1])-int(seq[c])==0)):
+            jolly=False
+            break;
+        c=c+1
+    if jolly:
+        print "Jolly"
+    else:
+        print "Not jolly"
